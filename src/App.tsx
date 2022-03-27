@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import Layout from './components/layout/Layout';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import PickTest from './pages/PickTestPage';
+import DoTest from './pages/DoTestPage';
+import EditSets from './pages/EditSetsPage';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Routes>
+        <Route path='/' element={<Navigate replace to='/pick-test' />} />
+        <Route path='/pick-test' element={<PickTest />} />
+        <Route path='/do-test/:setId' element={<DoTest />}/>
+        <Route path='/edit-sets' element={<EditSets />} />
+        <Route path='/edit-set/:setId' element={<EditSets />} />
+        <Route path='*' element={<PageNotFound />} />
+      </Routes>
+    </Layout>
   );
 }
 
