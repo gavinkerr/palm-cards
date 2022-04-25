@@ -34,7 +34,7 @@ function EditSetsPage() {
   }
 
   return (
-    <Fragment>
+    <>
       <section>
         <h1>All Sets</h1>
         <SetList sets={loadedSets} />
@@ -42,7 +42,7 @@ function EditSetsPage() {
       <section>
         <NewSetDialogButton onConfirm={handelAddConfirm} />
       </section>
-    </Fragment>
+    </>
   );
 }
 

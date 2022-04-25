@@ -13,9 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate replace to="/pick-test" />} />
         <Route path="/pick-test" element={<PickTest />} />
-        <Route path="/do-test/:setId" element={<DoTest />} />
+        <Route path="/do-test/:id" element={<DoTest />} />
         <Route path="/edit-sets" element={<EditSets />} />
-        <Route path="/edit-set/:setId" element={<EditSet />} />
+        <Route path="/edit-set/:id" element={<EditSet />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Layout>

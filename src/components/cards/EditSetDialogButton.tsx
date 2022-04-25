@@ -9,23 +9,21 @@ import {
 import SetForm from "./SetForm";
 import { Set } from "../../domain/domain";
 
-function NewSetDialogButton(props: { onConfirm: (value: Set) => void }) {
-  const [open, setOpen] = useState(false);
-  // const [newSet, setNewSet] = useState<Set>( {cards: [], description: '', title: ''});
-
-  const unitset: Set = { cards: [], description: "", title: "" };
+function EditSetDialogButton(props: {
+  initValue: Set;
+  open: boolean;
+  onConfirm: (value: Set) => void;
+  onCancel: () => void;
+}) {
+  const unitset: Set = { ...props.initValue };
   let newSet: Set = unitset;
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
-    setOpen(false);
+    props.onCancel();
   };
 
   const handleOkay = () => {
-    setOpen(false);
+    props.onCancel();
     props.onConfirm(newSet);
   };
 
@@ -35,11 +33,8 @@ function NewSetDialogButton(props: { onConfirm: (value: Set) => void }) {
 
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Add New Set
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add New Set</DialogTitle>
+      <Dialog open={props.open} onClose={handleClose}>
+        <DialogTitle>Edit Set</DialogTitle>
         <DialogContent>
           <SetForm onSetChange={handleSetChange} set={unitset}></SetForm>
         </DialogContent>
@@ -52,4 +47,4 @@ function NewSetDialogButton(props: { onConfirm: (value: Set) => void }) {
   );
 }
 
-export default NewSetDialogButton;
+export default EditSetDialogButton;
