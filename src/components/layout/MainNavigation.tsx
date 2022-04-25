@@ -9,9 +9,9 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import React from "react";
-import { Link } from "react-router-dom";
 
 interface Page {
   name: string;
@@ -84,17 +84,10 @@ const MainNavigation = () => {
                 <MenuItem
                   key={page.name}
                   onClick={handleCloseNavMenu}
-                  href={page.path}
+                  component={RouterLink}
+                  to={page.path}
                 >
-                  <Typography textAlign="center">
-                    <Link
-                      style={{ textDecoration: "none", color: "black" }}
-                      to={page.path}
-                    >
-                      {" "}
-                      {page.name}
-                    </Link>
-                  </Typography>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -113,14 +106,10 @@ const MainNavigation = () => {
                 key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
+                component={RouterLink}
+                to={page.path}
               >
-                <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to={page.path}
-                >
-                  {" "}
-                  {page.name}
-                </Link>
+                {page.name}
               </Button>
             ))}
           </Box>
