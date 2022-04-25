@@ -22,7 +22,7 @@ function EditSet() {
     alert(JSON.stringify(value));
     setIsEditOpen(false);
     setIsLoading(false);
-    updateSet(value).then((newSet) => {
+    updateSet(value).then(() => {
       setIsLoading(false);
       setLoadedSet(value);
     });

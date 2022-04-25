@@ -1,6 +1,10 @@
 import { Box, BoxProps, TextField } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, PropsWithChildren, useState } from "react";
 import { Set } from "../../domain/domain";
+
+function Item(props: PropsWithChildren<any>) {
+  return <Box sx={{ p: 1, m: 1 }}>{props.children}</Box>;
+}
 
 function SetForm(props: { set: Set; onSetChange: (value: Set) => void }) {
   const [title, setTitle] = useState(props.set.title);
@@ -21,7 +25,7 @@ function SetForm(props: { set: Set; onSetChange: (value: Set) => void }) {
 
   return (
     <Box sx={{ display: "grid" }}>
-      <Box sx={{ p: 1, m: 1 }}>
+      <Item>
         <TextField
           id="standard-basic"
           label="Title"
@@ -29,8 +33,8 @@ function SetForm(props: { set: Set; onSetChange: (value: Set) => void }) {
           value={title}
           onChange={handleTitleChange}
         />
-      </Box>
-      <Box sx={{ p: 1, m: 1 }}>
+      </Item>
+      <Item>
         <TextField
           id="outlined-multiline-flexible"
           label="Description"
@@ -39,7 +43,7 @@ function SetForm(props: { set: Set; onSetChange: (value: Set) => void }) {
           value={description}
           onChange={handleDescriptionChange}
         />
-      </Box>
+      </Item>
     </Box>
   );
 }
