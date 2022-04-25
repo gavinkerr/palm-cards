@@ -38,8 +38,7 @@ export function updateSet(set: Set): Promise<void> {
   if (!getAllIds().includes(set.id)) {
     throw new Error("set is not indexed");
   }
-  localStorage.setItem("set-all", JSON.stringify([...getAllIds(), set.id]));
-
+  localStorage.setItem("set-item-" + set.id, JSON.stringify(set));
   return Promise.resolve();
 }
 

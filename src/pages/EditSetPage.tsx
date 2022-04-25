@@ -2,7 +2,7 @@ import { Edit } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSet } from "../apis/cardsApi";
+import { getSet, updateSet } from "../apis/cardsApi";
 import CardList from "../components/cards/CardList";
 import EditSetDialogButton from "../components/cards/EditSetDialogButton";
 import { Set } from "../domain/domain";
@@ -22,10 +22,10 @@ function EditSet() {
     alert(JSON.stringify(value));
     setIsEditOpen(false);
     setIsLoading(false);
-    // addSet(value).then((newSet) => {
-    //   setIsLoading(false);
-    //   setLoadedSets([...loadedSets, newSet]);
-    // });
+    updateSet(value).then((newSet) => {
+      setIsLoading(false);
+      setLoadedSet(value);
+    });
   };
 
   useEffect(() => {

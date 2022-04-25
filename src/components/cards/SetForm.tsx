@@ -19,24 +19,9 @@ function SetForm(props: { set: Set; onSetChange: (value: Set) => void }) {
     props.onSetChange({ ...returnValue, description: event.target.value });
   };
 
-  function Item(props: BoxProps) {
-    const { sx, ...other } = props;
-    return (
-      <Box
-        sx={{
-          p: 1,
-          m: 1,
-          ...sx,
-        }}
-        {...other}
-      />
-    );
-  }
-
-  // eslint-disable-next-line react/jsx-no-undef
   return (
     <Box sx={{ display: "grid" }}>
-      <Item>
+      <Box sx={{ p: 1, m: 1 }}>
         <TextField
           id="standard-basic"
           label="Title"
@@ -44,8 +29,8 @@ function SetForm(props: { set: Set; onSetChange: (value: Set) => void }) {
           value={title}
           onChange={handleTitleChange}
         />
-      </Item>
-      <Item>
+      </Box>
+      <Box sx={{ p: 1, m: 1 }}>
         <TextField
           id="outlined-multiline-flexible"
           label="Description"
@@ -54,7 +39,7 @@ function SetForm(props: { set: Set; onSetChange: (value: Set) => void }) {
           value={description}
           onChange={handleDescriptionChange}
         />
-      </Item>
+      </Box>
     </Box>
   );
 }
