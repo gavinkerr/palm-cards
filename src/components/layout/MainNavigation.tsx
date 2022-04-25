@@ -18,11 +18,13 @@ interface Page {
   path: string;
 }
 
+//todo type and move out!
 const pages: Page[] = [
-  { name: "Do Test", path: "/edit-sets" },
-  { name: "Edit Sets", path: "/pick-test" },
+  { name: "Do Test", path: "/pick-test" },
+  { name: "Edit Sets", path: "/edit-sets" },
 ];
 
+//todo move out of here
 const title = "Test yo' sel B4 U wrec yo sel";
 
 const MainNavigation = () => {

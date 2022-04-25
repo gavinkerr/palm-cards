@@ -1,8 +1,5 @@
-
-
-function EditSetsPage(){
-
-    return <div>EditSetsPage</div>
+function EditSet() {
+  return <div>EditSetsPage</div>;
 }
 
-export default EditSetsPage;
+export default EditSet;
