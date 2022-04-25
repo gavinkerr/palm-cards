@@ -22,7 +22,7 @@ function SetForm(props: { set: Set; onSetChange: (value: Set) => void }) {
     setDescription(event.target.value);
     props.onSetChange({ ...returnValue, description: event.target.value });
   };
-
+  //todo https://mui.com/material-ui/react-grid/
   return (
     <Box sx={{ display: "grid" }}>
       <Item>
