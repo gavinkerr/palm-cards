@@ -26,7 +26,7 @@ function EditSet() {
   }
   //todo fix the loading bug ...
   const handelAddConfirm = (value: PalmCard) => {
-    alert(JSON.stringify(value));
+    //alert(JSON.stringify(value));
     setIsLoading(false);
     if (!!loadedSet) {
       const newSet = { ...loadedSet, cards: [...loadedSet.cards, value] };
@@ -38,13 +38,29 @@ function EditSet() {
   };
 
   const handelEditCard = (value: PalmCard, index: number) => {
-    alert(JSON.stringify(value));
+    //alert(JSON.stringify(value));
     setEditingCard({ card: value, index });
     setIsEditCardOpen(true);
   };
 
+  const handelDeleteCard = (_: PalmCard, index: number) => {
+    debugger;
+    if (!!loadedSet) {
+      const newCards = [...loadedSet.cards];
+      newCards.splice(index, 1);
+      const newSet = {
+        ...loadedSet,
+        cards: newCards,
+      };
+      updateSet(newSet).then(() => {
+        setIsLoading(false);
+        setLoadedSet(newSet);
+      });
+    }
+  };
+
   const handelEditSetConfirm = (value: Set) => {
-    alert(JSON.stringify(value));
+    //alert(JSON.stringify(value));
     setIsEditSetOpen(false);
     setIsLoading(false);
     updateSet(value).then(() => {
@@ -54,7 +70,7 @@ function EditSet() {
   };
 
   const handelEditCardConfirm = (value: PalmCard) => {
-    alert(JSON.stringify(value));
+    //alert(JSON.stringify(value));
     setIsEditSetOpen(false);
     if (!!loadedSet) {
       const newSet = {
@@ -97,7 +113,11 @@ function EditSet() {
         <IconButton onClick={handleEditClick}>
           <Edit sx={{ fontSize: 14 }} />
         </IconButton>
-        <CardList editClick={handelEditCard} cards={loadedSet?.cards || []} />
+        <CardList
+          editClick={handelEditCard}
+          deleteClick={handelDeleteCard}
+          cards={loadedSet?.cards || []}
+        />
       </section>
       <section>
         <NewCardDialogButton onConfirm={handelAddConfirm} />

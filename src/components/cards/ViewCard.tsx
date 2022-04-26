@@ -1,4 +1,4 @@
-import { Edit } from "@mui/icons-material";
+import { Delete, Edit } from "@mui/icons-material";
 import {
   Avatar,
   Box,
@@ -12,7 +12,11 @@ import { PalmCard } from "../../domain/domain";
 
 //TODO tight align the icon a
 
-function ViewCard(props: { card: PalmCard; editClick: () => void }) {
+function ViewCard(props: {
+  card: PalmCard;
+  editClick: () => void;
+  deleteClick: () => void;
+}) {
   return (
     <Card>
       <Box sx={{ p: 2, display: "flex" }}>
@@ -27,6 +31,9 @@ function ViewCard(props: { card: PalmCard; editClick: () => void }) {
         </Stack>
         <IconButton onClick={() => props.editClick()}>
           <Edit sx={{ fontSize: 14 }} />
+        </IconButton>
+        <IconButton onClick={() => props.deleteClick()}>
+          <Delete sx={{ fontSize: 14 }} />
         </IconButton>
       </Box>
       <Divider />
