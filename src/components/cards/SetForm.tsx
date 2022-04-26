@@ -1,4 +1,4 @@
-import { Box, BoxProps, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import { ChangeEvent, PropsWithChildren, useState } from "react";
 import { Set } from "../../domain/domain";
 

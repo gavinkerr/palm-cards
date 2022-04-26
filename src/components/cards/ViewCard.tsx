@@ -10,18 +10,22 @@ import {
 } from "@mui/material";
 import { PalmCard } from "../../domain/domain";
 
-function ViewCard(props: { card: PalmCard }) {
+//TODO tight align the icon a
+
+function ViewCard(props: { card: PalmCard; editClick: () => void }) {
   return (
     <Card>
       <Box sx={{ p: 2, display: "flex" }}>
-        <Avatar variant="rounded" src={props.card.imageUri} />
+        {!!props.card.imageUri ? (
+          <Avatar variant="rounded" src={props.card.imageUri} />
+        ) : null}
         <Stack spacing={0.5}>
           <Typography fontWeight={700}>{props.card.question}</Typography>
           <Typography variant="body2" color="text.secondary">
             {props.card.answer}
           </Typography>
         </Stack>
-        <IconButton>
+        <IconButton onClick={() => props.editClick()}>
           <Edit sx={{ fontSize: 14 }} />
         </IconButton>
       </Box>
